@@ -14,7 +14,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 	} else if(coll.gameObject.tag == "Brick"){
 		Debug.Log(rigidbody2D.velocity.y);
 		rigidbody2D.velocity.y += rigidbody2D.velocity.y/-2;
-		GameController.Score();
+		ScoreManager.score += 1;
 		Destroy(coll.gameObject);
 	}
 }

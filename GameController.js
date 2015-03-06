@@ -2,12 +2,6 @@
 
 var brick : GameObject;
 
-static var score : int = 0;
-
-static function Score(){
-	score += 1;
-}
-
 function Start () {
 
 	// create a group of bricks 20 x 5
