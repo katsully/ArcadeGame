@@ -5,7 +5,9 @@ function Start () {
 }
 
 function Update () {
-
+	if(rigidbody2D.position.y < -7){
+		Application.LoadLevel("End");
+	}
 }
 
 function OnCollisionEnter2D( coll : Collision2D){
