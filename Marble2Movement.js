@@ -15,7 +15,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 		rigidbody2D.velocity.x *= -1;
 	} else if(coll.gameObject.tag == "Brick"){
 		rigidbody2D.velocity.y += rigidbody2D.velocity.y/-2;
-		ScoreManager.score += 1;
+		Score2Manager.score += 1;
 		Destroy(coll.gameObject);
 	}
 }
