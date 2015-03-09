@@ -14,3 +14,9 @@ function Update () {
 		rigidbody2D.velocity.x = 0;
 	}
 }
+
+function OnCollisionEnter2D( coll : Collision2D){
+	if(coll.gameObject.tag == "Gem"){
+		Destroy(coll.gameObject);
+	} 
+}

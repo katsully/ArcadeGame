@@ -2,6 +2,9 @@
 
 var brick : GameObject;
 
+static var specialBrickXPosition : float;
+static var specialBrickYPosition : float;
+
 function Start () {
 
 	// create a group of bricks 20 x 5
@@ -14,7 +17,8 @@ function Start () {
 			}
 		}
 	}
-	
+	specialBrickXPosition = 3 - 9.5;
+	specialBrickYPosition = 0 * .5 + 2;
 
 }
 
