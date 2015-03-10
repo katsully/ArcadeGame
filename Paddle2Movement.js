@@ -8,7 +8,7 @@ var speed : float = 15;
 function Update () {
 	if(Input.GetKey(moveRight) && rigidbody2D.transform.position.x < 9){
 		rigidbody2D.velocity.x = speed;
-	} else if(Input.GetKey(moveLeft) && rigidbody2D.transform.position.x > 3){
+	} else if(Input.GetKey(moveLeft) && rigidbody2D.transform.position.x > 2.25){
 		rigidbody2D.velocity.x = speed * -1;
 	} else {
 		rigidbody2D.velocity.x = 0;

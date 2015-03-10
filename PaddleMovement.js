@@ -6,7 +6,7 @@ var moveRight : KeyCode;
 var speed : float = 15;
 
 function Update () {
-	if(Input.GetKey(moveRight) && rigidbody2D.transform.position.x < -1.25){
+	if(Input.GetKey(moveRight) && rigidbody2D.transform.position.x < -1.5){
 		rigidbody2D.velocity.x = speed;
 	} else if(Input.GetKey(moveLeft) && rigidbody2D.transform.position.x > -9){
 		rigidbody2D.velocity.x = speed * -1;
