@@ -7,9 +7,9 @@ function Start () {
 }
 
 function Update () {
-//	if(rigidbody2D.position.y < -7){
-//		Application.LoadLevel("End");
-//	}
+	if(rigidbody2D.position.y < -7) {
+		ResetBall();
+	}
 	
 }
 
@@ -24,4 +24,11 @@ function OnCollisionEnter2D( coll : Collision2D){
 		}
 		Destroy(coll.gameObject);
 	}
+}
+
+function ResetBall() {
+	rigidbody2D.velocity.x = 0;
+	rigidbody2D.velocity.y = 0;
+	transform.position.x = 6;
+	transform.position.y = -1.4;
 }
