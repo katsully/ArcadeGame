@@ -3,7 +3,7 @@
 var moveLeft : KeyCode;
 var moveRight : KeyCode;
 
-var speed : float = 25;
+var speed : float = 10;
 var canPass : boolean = false;
 
 function Update () {
@@ -11,7 +11,6 @@ function Update () {
 		rigidbody2D.velocity.x = speed;
 	} else if(Input.GetKey(moveLeft) && rigidbody2D.transform.position.x > -9){
 		rigidbody2D.velocity.x = speed * - 1;
-//		rigidbody2D.AddForce(Vector2.right * 1.5f)
 	} else {
 		rigidbody2D.velocity.x = 0;
 	}

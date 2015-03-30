@@ -3,7 +3,7 @@
 var moveLeft : KeyCode;
 var moveRight : KeyCode;
 
-var speed : float = 25;
+var speed : float = 10;
 var canPass : boolean = false;
 
 function Update () {
