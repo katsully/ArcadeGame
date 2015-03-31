@@ -15,10 +15,11 @@ function Update () {
 function OnCollisionEnter2D( coll : Collision2D){
 	if(coll.gameObject.tag == "Wall"){
 		//rigidbody2D.velocity.x *= -1;
-	} else if(coll.gameObject.tag == "Brick"){
 		var newY = rigidbody2D.velocity.y/-2;
-		var intNewY : int = newY;
-		//rigidbody2D.velocity.y += intNewY;
+		rigidbody2D.velocity.y = newY;
+	} else if(coll.gameObject.tag == "Brick"){
+		newY = rigidbody2D.velocity.y/-2;
+		rigidbody2D.velocity.y = newY;	
 		ScoreManager.score += 1;
 		if(coll.transform.position.x == GameController.specialBrickXPosition && coll.transform.position.y == GameController.specialBrickYPosition) {
 			Debug.Log("here");
@@ -28,6 +29,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 	} else if(coll.collider.tag == "Player") {
 		rigidbody2D.velocity.y = rigidbody2D.velocity.y/2 + coll.collider.rigidbody2D.velocity.y/3;
 	}
+	
 }
 
 function ResetBall() {

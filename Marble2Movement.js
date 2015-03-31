@@ -15,9 +15,11 @@ function Update () {
 
 function OnCollisionEnter2D( coll : Collision2D){
 	if(coll.gameObject.tag == "Wall"){
-		//rigidbody2D.velocity.x *= -1;
+		var newY = rigidbody2D.velocity.y/-2;
+		rigidbody2D.velocity.y = newY;
 	} else if(coll.gameObject.tag == "Brick"){
-		rigidbody2D.velocity.y += rigidbody2D.velocity.y/-2;
+		newY = rigidbody2D.velocity.y/-2;
+		rigidbody2D.velocity.y = newY;
 		Score2Manager.score += 1;
 		if(coll.transform.position.x == GameController.specialBrickXPosition && coll.transform.position.y == GameController.specialBrickYPosition) {
 			Instantiate(Gem, Vector3(GameController.specialBrickXPosition, GameController.specialBrickYPosition, 0), Quaternion.identity);

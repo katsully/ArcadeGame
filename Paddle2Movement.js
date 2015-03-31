@@ -20,5 +20,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 	if(coll.gameObject.tag == "Gem"){
 		Destroy(coll.gameObject);
 		canPass = true;
+		audio.pitch = Random.Range(0.8f, 1.2f);
+		audio.Play();
 	} 
 }
