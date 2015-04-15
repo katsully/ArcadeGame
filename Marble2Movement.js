@@ -1,6 +1,7 @@
 ﻿#pragma strict
 
 var Gem : GameObject;
+var player : Collider2D;
 var oppPlayer : Collider2D;
 var enemyHit : boolean = false;
 
@@ -29,12 +30,15 @@ function OnCollisionEnter2D( coll : Collision2D){
 			}
 			Destroy(coll.gameObject);
 		} else {
-			Debug.Log("YEahhhh");
-			coll.transform.localScale.x = 2;
-			coll.transform.localScale.y = 2;
+			coll.transform.localScale += new Vector3(2F, 2F, 0);
 		}
-	} else if(coll.gameObject.name == oppPlayer.name){
-		enemyHit = true;
+	} else if(coll.gameObject.tag == "Player"){
+		if(coll.gameObject.name == player.name){
+			enemyHit = false;
+		}
+		else if(coll.gameObject.name == oppPlayer.name){
+			enemyHit = true;
+		}
 	}
 	
 }
