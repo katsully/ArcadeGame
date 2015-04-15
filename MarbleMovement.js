@@ -1,14 +1,22 @@
 ﻿#pragma strict
 
 var Gem : GameObject;
+var slowDown : boolean = false;
 
 function Start () {
+	
+}
 
+function slowDownMarble() {
+	slowDown = true;
 }
 
 function Update () {
 	if (rigidbody2D.position.y < -7){
 		ResetBall();
+	}
+	if(slowDown) {
+		rigidbody2D.velocity.y *= .25;
 	}
 }
 
@@ -21,8 +29,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 		newY = rigidbody2D.velocity.y/-2;
 		rigidbody2D.velocity.y = newY;	
 		ScoreManager.score += 1;
-		if(coll.transform.position.x == GameController.specialBrickXPosition && coll.transform.position.y == GameController.specialBrickYPosition) {
-			Debug.Log("here");
+		if(coll.transform.position.x == GameController.specialBrickXPosition && coll.transform.position.y == GameController.specialBrickYPosition) {;
 			Instantiate(Gem, Vector3(GameController.specialBrickXPosition, GameController.specialBrickYPosition, 0), Quaternion.identity);
 		}
 		Destroy(coll.gameObject);

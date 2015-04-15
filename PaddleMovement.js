@@ -2,6 +2,11 @@
 
 var moveLeft : KeyCode;
 var moveRight : KeyCode;
+var marble : MarbleMovement;
+
+// might need this
+// var audio : AudioSource;
+// audio.GetComponent(AudioSource);
 
 var speed : float = 10;
 var canPass : boolean = false;
@@ -22,5 +27,6 @@ function OnCollisionEnter2D( coll : Collision2D){
 		canPass = true;
 		audio.pitch = Random.Range(0.8f, 1.2f);
 		audio.Play();
+		marble.slowDownMarble();
 	} 
 }
