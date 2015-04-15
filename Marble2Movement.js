@@ -1,9 +1,11 @@
 ﻿#pragma strict
 
 var Gem : GameObject;
+var oppPlayer : Collider2D;
+var enemyHit : boolean = false;
 
 function Start () {
-
+	
 }
 
 function Update () {
@@ -20,12 +22,21 @@ function OnCollisionEnter2D( coll : Collision2D){
 	} else if(coll.gameObject.tag == "Brick"){
 		newY = rigidbody2D.velocity.y/-2;
 		rigidbody2D.velocity.y = newY;
-		Score2Manager.score += 1;
-		if(coll.transform.position.x == GameController.specialBrickXPosition && coll.transform.position.y == GameController.specialBrickYPosition) {
-			Instantiate(Gem, Vector3(GameController.specialBrickXPosition, GameController.specialBrickYPosition, 0), Quaternion.identity);
+		if(!enemyHit) {
+			Score2Manager.score += 1;
+			if(coll.transform.position.x == GameController.specialBrickXPosition && coll.transform.position.y == GameController.specialBrickYPosition) {
+				Instantiate(Gem, Vector3(GameController.specialBrickXPosition, GameController.specialBrickYPosition, 0), Quaternion.identity);
+			}
+			Destroy(coll.gameObject);
+		} else {
+			Debug.Log("YEahhhh");
+			coll.transform.localScale.x = 2;
+			coll.transform.localScale.y = 2;
 		}
-		Destroy(coll.gameObject);
+	} else if(coll.gameObject.name == oppPlayer.name){
+		enemyHit = true;
 	}
+	
 }
 
 function ResetBall() {

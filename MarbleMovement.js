@@ -16,7 +16,7 @@ function Update () {
 		ResetBall();
 	}
 	if(slowDown) {
-		rigidbody2D.velocity.y *= .25;
+		rigidbody2D.velocity.y *= .35;
 	}
 }
 
@@ -33,8 +33,10 @@ function OnCollisionEnter2D( coll : Collision2D){
 			Instantiate(Gem, Vector3(GameController.specialBrickXPosition, GameController.specialBrickYPosition, 0), Quaternion.identity);
 		}
 		Destroy(coll.gameObject);
-	} else if(coll.collider.tag == "Player") {
-		rigidbody2D.velocity.y = rigidbody2D.velocity.y/2 + coll.collider.rigidbody2D.velocity.y/3;
+	} else if(coll.collider.tag == "Player" && slowDown) {;
+		rigidbody2D.velocity.y = 10;
+		slowDown = false;
+		
 	}
 	
 }
