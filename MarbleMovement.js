@@ -3,6 +3,7 @@
 var Gem : GameObject;
 var slowDown : boolean = false;
 
+
 function Start () {
 	
 }
@@ -33,6 +34,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 			Instantiate(Gem, Vector3(GameController.specialBrickXPosition, GameController.specialBrickYPosition, 0), Quaternion.identity);
 		}
 		Destroy(coll.gameObject);
+		PaddleMovement.canPass = false;
 	} else if(coll.collider.tag == "Player" && slowDown) {;
 		rigidbody2D.velocity.y = 10;
 		slowDown = false;

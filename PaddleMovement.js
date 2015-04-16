@@ -9,7 +9,7 @@ var marble : MarbleMovement;
 // audio.GetComponent(AudioSource);
 
 var speed : float = 10;
-var canPass : boolean = false;
+static var canPass : boolean = false;
 
 function Update () {
 	if(Input.GetKey(moveRight) && (rigidbody2D.transform.position.x < -2.1 || canPass)){

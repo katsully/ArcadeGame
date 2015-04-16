@@ -19,6 +19,7 @@ function Update () {
 function OnCollisionEnter2D( coll : Collision2D){
 	if(coll.gameObject.tag == "Wall"){
 		var newY = rigidbody2D.velocity.y/-2;
+		rigidbody2D.transform.position.y -= .5;
 		rigidbody2D.velocity.y = newY;
 	} else if(coll.gameObject.tag == "Brick"){
 		newY = rigidbody2D.velocity.y/-2;
@@ -28,8 +29,13 @@ function OnCollisionEnter2D( coll : Collision2D){
 			if(coll.transform.position.x == GameController.specialBrickXPosition && coll.transform.position.y == GameController.specialBrickYPosition) {
 				Instantiate(Gem, Vector3(GameController.specialBrickXPosition, GameController.specialBrickYPosition, 0), Quaternion.identity);
 			}
-			Destroy(coll.gameObject);
+			if(coll.transform.localScale.x > 2) {
+				coll.transform.localScale -= new Vector3(2F, 2F, 0);
+			} else {
+				Destroy(coll.gameObject);
+			}
 		} else {
+			ScoreManager.score += 1;
 			coll.transform.localScale += new Vector3(2F, 2F, 0);
 		}
 	} else if(coll.gameObject.tag == "Player"){
