@@ -27,6 +27,6 @@ function OnCollisionEnter2D( coll : Collision2D){
 		canPass = true;
 		audio.pitch = Random.Range(0.8f, 1.2f);
 		audio.Play();
-		marble.slowDownMarble();
+		marble.slowDown = true;;
 	} 
 }

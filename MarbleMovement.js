@@ -1,15 +1,11 @@
 ﻿#pragma strict
 
 var Gem : GameObject;
-var slowDown : boolean = false;
+static var slowDown : boolean = false;
 
 
 function Start () {
 	
-}
-
-function slowDownMarble() {
-	slowDown = true;
 }
 
 function Update () {
@@ -23,7 +19,6 @@ function Update () {
 
 function OnCollisionEnter2D( coll : Collision2D){
 	if(coll.gameObject.tag == "Wall"){
-		//rigidbody2D.velocity.x *= -1;
 		var newY = rigidbody2D.velocity.y/-2;
 		rigidbody2D.velocity.y = newY;
 	} else if(coll.gameObject.tag == "Brick"){
@@ -34,18 +29,21 @@ function OnCollisionEnter2D( coll : Collision2D){
 			Instantiate(Gem, Vector3(GameController.specialBrickXPosition, GameController.specialBrickYPosition, 0), Quaternion.identity);
 		}
 		Destroy(coll.gameObject);
+	} else if(coll.collider.tag == "Player") {
 		PaddleMovement.canPass = false;
-	} else if(coll.collider.tag == "Player" && slowDown) {;
-		rigidbody2D.velocity.y = 10;
-		slowDown = false;
-		
+		if(slowDown){
+			rigidbody2D.velocity.y = 10;
+			slowDown = false;
+		}
 	}
 	
 }
 
 function ResetBall() {
+	yield WaitForSeconds(5.0);
 	rigidbody2D.velocity.x = 0;
 	rigidbody2D.velocity.y = 0;
 	transform.position.x = -6;
 	transform.position.y = -1.4;
+	slowDown = false;
 }
