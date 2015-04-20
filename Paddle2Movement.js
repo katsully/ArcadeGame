@@ -5,12 +5,12 @@ var moveRight : KeyCode;
 var marble : Marble2Movement;
 
 var speed : float = 10;
-static var canPass : boolean = false;
+static var leftCanPass : boolean = false;
 
 function Update () {
-	if(Input.GetKey(moveRight) && (rigidbody2D.transform.position.x < 9 || canPass)){
+	if(Input.GetKey(moveRight) && rigidbody2D.transform.position.x < 9){
 		rigidbody2D.velocity.x = speed;
-	} else if(Input.GetKey(moveLeft) && rigidbody2D.transform.position.x > 2.1){
+	} else if(Input.GetKey(moveLeft) && (rigidbody2D.transform.position.x > 2.1 || leftCanPass)){
 		rigidbody2D.velocity.x = speed * -1;
 	} else {
 		rigidbody2D.velocity.x = 0;
@@ -20,9 +20,9 @@ function Update () {
 function OnCollisionEnter2D( coll : Collision2D){
 	if(coll.gameObject.tag == "Gem"){
 		Destroy(coll.gameObject);
-		canPass = true;
+		leftCanPass = true;
 		audio.pitch = Random.Range(0.8f, 1.2f);
 		audio.Play();
-		marble.slowDown = true;
+		marble.leftSlowDown = true;
 	} 
 }

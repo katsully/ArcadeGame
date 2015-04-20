@@ -5,7 +5,7 @@ var player : Collider2D;
 var oppPlayer : Collider2D;
 var enemyHit : boolean = false;
 
-static var slowDown : boolean = false;
+static var leftSlowDown : boolean = false;
 
 function Start () {
 	
@@ -15,7 +15,7 @@ function Update () {
 	if(rigidbody2D.position.y < -7) {
 		ResetBall();
 	}
-	if(slowDown) {
+	if(leftSlowDown) {
 		rigidbody2D.velocity.y *= .35;
 	}
 }
@@ -31,9 +31,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 		}
 		rigidbody2D.velocity.y = newY;
 		if(!enemyHit) {
-			Score2Manager.score += 1;
-			Debug.Log(coll.transform.position.x);
-			Debug.Log(coll.transform.position.y);
+			Score2Manager.score += 1;;
 			if(coll.transform.position.x == GameController.specialBrickXPosition2 && coll.transform.position.y == GameController.specialBrickYPosition2) {
 				Instantiate(Gem, Vector3(GameController.specialBrickXPosition2, GameController.specialBrickYPosition2, 0), Quaternion.identity);
 			}
@@ -49,6 +47,11 @@ function OnCollisionEnter2D( coll : Collision2D){
 	} else if(coll.gameObject.tag == "Player"){
 		if(coll.gameObject.name == player.name){
 			enemyHit = false;
+			Paddle2Movement.leftCanPass = false;
+			if(leftSlowDown){
+				rigidbody2D.velocity.y = 10;
+				leftSlowDown = false;
+			}
 		}
 		else if(coll.gameObject.name == oppPlayer.name){
 			enemyHit = true;
@@ -63,4 +66,5 @@ function ResetBall() {
 	rigidbody2D.velocity.y = 0;
 	transform.position.x = 6;
 	transform.position.y = -1.4;
+	leftSlowDown = false;
 }
