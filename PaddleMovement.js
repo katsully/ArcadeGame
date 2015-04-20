@@ -28,5 +28,6 @@ function OnCollisionEnter2D( coll : Collision2D){
 		audio.pitch = Random.Range(0.8f, 1.2f);
 		audio.Play();
 		marble.slowDown = true;
+		GetComponent(SpriteRenderer).color = new Color(.2f,1f,1f,1f);
 	} 
 }
