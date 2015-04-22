@@ -17,6 +17,7 @@ function Update () {
 	}
 	if(rightFreeze) {
 		rigidbody2D.velocity.y = 0;
+		rigidbody2D.velocity.x = 0;
 		rigidbody2D.gravityScale = 0;
 	}
 }
@@ -31,19 +32,30 @@ function OnCollisionEnter2D( coll : Collision2D){
 			newY *= -1;
 		}
 		rigidbody2D.velocity.y = newY;
+		var currColor = coll.gameObject.GetComponent(SpriteRenderer).color;
 		if(!enemyHit) {
 			Score2Manager.score += 1;;
 			if(coll.transform.position.x == GameController.specialBrickXPosition2 && coll.transform.position.y == GameController.specialBrickYPosition2) {
 				Instantiate(Gem, Vector3(GameController.specialBrickXPosition2, GameController.specialBrickYPosition2, 0), Quaternion.identity);
 			}
-			if(coll.transform.localScale.x > 2) {
-				coll.transform.localScale -= new Vector3(2F, 2F, 0);
+			if(currColor != Color(1.0f, 1.0f, 1.0f, 1.0f)) {
+				if(currColor == Color(.5f, .12f, .15f, 1f)) {
+					coll.gameObject.GetComponent(SpriteRenderer).color = Color(.5f, 5.0f, 5.0f);
+				} else if(currColor == Color(.5f, 5f, 5f, 1f)) {
+					coll.gameObject.GetComponent(SpriteRenderer).color = Color(1f, 1f, 1.0f);
+				} else if(currColor == Color(.75f, .5f, .5f, 1f)) {
+					coll.gameObject.GetComponent(SpriteRenderer).color = Color(1f, 1f, 1.0f);
+				}
 			} else {
 				Destroy(coll.gameObject);
 			}
 		} else {
 			ScoreManager.score += 1;
-			coll.transform.localScale += new Vector3(2F, 2F, 0);
+			if(currColor == Color(1.0f, 1.0f, 1.0f, 1.0f)) {
+				coll.gameObject.GetComponent(SpriteRenderer).color = new Color(.75f, .5f, .5f, 1f);
+			} else if(currColor == Color(.75f, .5f, .5f, 1f)) {
+				coll.gameObject.GetComponent(SpriteRenderer).color = new Color(.5f, .12f, .15f, 1f);
+			}
 		}
 	} else if(coll.gameObject.tag == "Player"){
 		if(coll.gameObject.name == player.name){
