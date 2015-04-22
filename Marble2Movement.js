@@ -5,7 +5,7 @@ var player : Collider2D;
 var oppPlayer : Collider2D;
 var enemyHit : boolean = false;
 
-static var leftSlowDown : boolean = false;
+static var rightFreeze : boolean = false;
 
 function Start () {
 	
@@ -15,8 +15,9 @@ function Update () {
 	if(rigidbody2D.position.y < -7) {
 		ResetBall();
 	}
-	if(leftSlowDown) {
-		rigidbody2D.velocity.y *= .35;
+	if(rightFreeze) {
+		rigidbody2D.velocity.y = 0;
+		rigidbody2D.gravityScale = 0;
 	}
 }
 
@@ -48,9 +49,9 @@ function OnCollisionEnter2D( coll : Collision2D){
 		if(coll.gameObject.name == player.name){
 			enemyHit = false;
 			Paddle2Movement.leftCanPass = false;
-			if(leftSlowDown){
+			if(rightFreeze){
 				rigidbody2D.velocity.y = 10;
-				leftSlowDown = false;
+				rightFreeze = false;
 			}
 		}
 		else if(coll.gameObject.name == oppPlayer.name){
@@ -66,5 +67,5 @@ function ResetBall() {
 	rigidbody2D.velocity.y = 0;
 	transform.position.x = 6;
 	transform.position.y = -1.4;
-	leftSlowDown = false;
+	rightFreeze = false;
 }
