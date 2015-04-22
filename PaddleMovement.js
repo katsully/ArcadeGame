@@ -3,6 +3,7 @@
 var moveLeft : KeyCode;
 var moveRight : KeyCode;
 var marble : MarbleMovement;
+var time : TimeManager;
 
 // might need this
 // var audio : AudioSource;
@@ -28,6 +29,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 		audio.pitch = Random.Range(0.8f, 1.2f);
 		audio.Play();
 		marble.freeze = true;
+		time.startTimer();
 		GetComponent(SpriteRenderer).color = new Color(.2f,1f,1f,1f);
 	} 
 }

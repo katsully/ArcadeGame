@@ -68,5 +68,9 @@ function ResetBall() {
 	rigidbody2D.velocity.y = 0;
 	transform.position.x = -6;
 	transform.position.y = -1.4;
+}
+
+function unFreeze() {
 	freeze = false;
+	GetComponent(Rigidbody2D).gravityScale = 1;
 }
