@@ -9,7 +9,7 @@ static var freeze : boolean = false;
 
 
 function Start () {
-	
+	rigidbody2D.velocity.y = -5;
 }
 
 function Update () {
@@ -25,14 +25,14 @@ function Update () {
 
 function OnCollisionEnter2D( coll : Collision2D){
 	if(coll.gameObject.tag == "Wall"){
-		var newY = rigidbody2D.velocity.y/-2;
-		rigidbody2D.velocity.y = newY;
+//		var newY = rigidbody2D.velocity.y/-2;
+		rigidbody2D.velocity.y = -3;
 	} else if(coll.gameObject.tag == "Brick"){
-		newY = rigidbody2D.velocity.y/2;
-		if (newY > 0){
-			newY *= -1;
-		}
-		rigidbody2D.velocity.y = newY;
+//		newY = rigidbody2D.velocity.y/2;
+//		if (newY > 0){
+//			newY *= -1;
+//		}
+		rigidbody2D.velocity.y = -5;
 		var currColor = coll.gameObject.GetComponent(SpriteRenderer).color;
 		if(!enemyHit) {
 			ScoreManager.score += 1;

@@ -31,7 +31,7 @@ function Start () {
 	specialBrickXPosition = 3 - 9.5;
 	specialBrickYPosition = 0 * .5 + 2;
 	specialBrickXPosition2 = 14 - 9.5;
-	specialBrickYPosition2 = 0 * .5 + 2;
+	specialBrickYPosition2 = 1 * .5 + 2;
 	
 	topWall.size = new Vector2(mainCam.ScreenToWorldPoint (new Vector3(Screen.width * 2f, 0f, 0f)).x, 1f);
 	topWall.center = new Vector2(0f, mainCam.ScreenToWorldPoint(new Vector3(0f,Screen.height,0f)).y + 0.5f); 
