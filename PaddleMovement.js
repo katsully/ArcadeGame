@@ -13,7 +13,7 @@ var speed : float = 10;
 static var canPass : boolean = false;
 
 function Update () {
-	if(Input.GetKey(moveRight) && (rigidbody2D.transform.position.x < -2.1 || canPass)){
+	if(Input.GetKey(moveRight) && (rigidbody2D.transform.position.x < -1.6 || canPass)){
 		rigidbody2D.velocity.x = speed;
 	} else if(Input.GetKey(moveLeft) && rigidbody2D.transform.position.x > -9){
 		rigidbody2D.velocity.x = speed * - 1;

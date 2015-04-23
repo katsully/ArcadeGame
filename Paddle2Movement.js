@@ -11,7 +11,7 @@ static var leftCanPass : boolean = false;
 function Update () {
 	if(Input.GetKey(moveRight) && rigidbody2D.transform.position.x < 9){
 		rigidbody2D.velocity.x = speed;
-	} else if(Input.GetKey(moveLeft) && (rigidbody2D.transform.position.x > 2.1 || leftCanPass)){
+	} else if(Input.GetKey(moveLeft) && (rigidbody2D.transform.position.x > 1.6 || leftCanPass)){
 		rigidbody2D.velocity.x = speed * -1;
 	} else {
 		rigidbody2D.velocity.x = 0;
