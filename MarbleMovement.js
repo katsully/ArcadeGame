@@ -34,10 +34,6 @@ function OnCollisionEnter2D( coll : Collision2D){
 		rigidbody2D.velocity.y = -5;
 		var currColor = coll.gameObject.GetComponent(SpriteRenderer).color;
 		if(!enemyHit) {
-			Debug.Log("coll");
-			Debug.Log(coll.transform.position.x + " " + coll.transform.position.y);
-			Debug.Log("brick position");
-			Debug.Log(GameController.specialBrickXPosition + " " + GameController.specialBrickYPosition);
 			if(coll.transform.position.x == GameController.specialBrickXPosition && coll.transform.position.y == GameController.specialBrickYPosition) {
 				Instantiate(Gem, Vector3(GameController.specialBrickXPosition, GameController.specialBrickYPosition, 0), Quaternion.identity);
 			}
