@@ -19,7 +19,6 @@ function Update () {
 	if(freeze) {
 		rigidbody2D.velocity.y = 0;
 		rigidbody2D.velocity.x = 0;
-		rigidbody2D.gravityScale = 0;
 	}
 }
 
@@ -84,5 +83,4 @@ function ResetBall() {
 
 function unFreeze() {
 	freeze = false;
-	GetComponent(Rigidbody2D).gravityScale = 1;
 }
