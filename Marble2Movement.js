@@ -33,7 +33,6 @@ function OnCollisionEnter2D( coll : Collision2D){
 		rigidbody2D.velocity.y = -5;
 		var currColor = coll.gameObject.GetComponent(SpriteRenderer).color;
 		if(!enemyHit) {
-			Score2Manager.score += 1;;
 			if(coll.transform.position.x == GameController.specialBrickXPosition2 && coll.transform.position.y == GameController.specialBrickYPosition2) {
 				Instantiate(Gem, Vector3(GameController.specialBrickXPosition2, GameController.specialBrickYPosition2, 0), Quaternion.identity);
 			}
@@ -47,9 +46,9 @@ function OnCollisionEnter2D( coll : Collision2D){
 				}
 			} else {
 				Destroy(coll.gameObject);
+				Score2Manager.score += 1;
 			}
 		} else {
-			ScoreManager.score += 1;
 			if(currColor == Color(1.0f, 1.0f, 1.0f, 1.0f)) {
 				coll.gameObject.GetComponent(SpriteRenderer).color = new Color(.75f, .5f, .5f, 1f);
 			} else if(currColor == Color(.75f, .5f, .5f, 1f)) {
@@ -75,7 +74,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 function ResetBall() {
 	yield WaitForSeconds(5.0);
 	rigidbody2D.velocity.x = 0;
-	rigidbody2D.velocity.y = 0;
+	rigidbody2D.velocity.y = -5;
 	transform.position.x = 6;
 	transform.position.y = -1.4;
 }
