@@ -4,6 +4,7 @@ var moveLeft : KeyCode;
 var moveRight : KeyCode;
 var marble : Marble2Movement;
 var time : Time2Manager;
+var wall : GameObject;
 
 var speed : float = 10;
 static var leftCanPass : boolean = false;
@@ -27,5 +28,12 @@ function OnCollisionEnter2D( coll : Collision2D){
 		marble.rightFreeze = true;
 		time.startTimer();
 		GetComponent(SpriteRenderer).color = new Color(.2f,1f,1f,1f);
+		wall.GetComponent(SpriteRenderer).color = new Color(.2f,1f,1f,1f);
 	} 
+}
+
+function cantPass(){
+	leftCanPass = false;
+	GetComponent(SpriteRenderer).color = new Color(1f,0f,.85f,1f);
+	wall.GetComponent(SpriteRenderer).color = new Color(1f,1f,1f,1f);
 }

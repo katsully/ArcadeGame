@@ -34,5 +34,5 @@ function startTimer(){
 	}
 	text.enabled = false;
 	marble.unFreeze();
-	paddle.leftCanPass = false;
+	paddle.cantPass();
 }
