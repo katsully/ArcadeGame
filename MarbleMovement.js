@@ -26,7 +26,6 @@ function Update () {
 
 function OnCollisionEnter2D( coll : Collision2D){
 	if(coll.gameObject.tag == "Wall"){
-//		var newY = rigidbody2D.velocity.y/-2;
 		rigidbody2D.velocity.y = -3;
 	} else if(coll.gameObject.tag == "Brick"){
 		rigidbody2D.velocity.y = -5;

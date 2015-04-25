@@ -5,10 +5,6 @@ var moveRight : KeyCode;
 var marble : MarbleMovement;
 var time : TimeManager;
 
-// might need this
-// var audio : AudioSource;
-// audio.GetComponent(AudioSource);
-
 var speed : float = 10;
 static var canPass : boolean = false;
 
