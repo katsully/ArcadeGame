@@ -7,6 +7,8 @@ var enemyHit : boolean = false;
 
 static var freeze : boolean = false;
 
+var gameController : GameController;
+
 
 function Start () {
 	rigidbody2D.velocity.y = -5;
@@ -83,4 +85,6 @@ function ResetBall() {
 
 function unFreeze() {
 	freeze = false;
+	gameController.addGem();
+	rigidbody2D.velocity.y = -5;
 }

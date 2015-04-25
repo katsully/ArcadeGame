@@ -23,21 +23,12 @@ function Update () {
 
 function OnCollisionEnter2D( coll : Collision2D){
 	if(coll.gameObject.tag == "Wall"){
-//		var newY = rigidbody2D.velocity.y/-2;
 		rigidbody2D.velocity.y = -3;
 	} else if(coll.gameObject.tag == "Brick"){
-//		newY = rigidbody2D.velocity.y/2;
-//		if (newY > 0){
-//			newY *= -1;
-//		}
 		rigidbody2D.velocity.y = -5;
 		var currColor = coll.gameObject.GetComponent(SpriteRenderer).color;
 		if(!enemyHit) {
-			Debug.Log("coll");
-			Debug.Log(coll.transform.position.x + " " + coll.transform.position.y);
-			Debug.Log("brick position");
-			Debug.Log(GameController.specialBrickXPosition2 + " " + GameController.specialBrickYPosition);
-			if(coll.transform.position.x == GameController.specialBrickXPosition2 && coll.transform.position.y == GameController.specialBrickYPosition) {
+			if(coll.transform.position.x == GameController.specialBrickXPosition2 && coll.transform.position.y == GameController.specialBrickYPosition2) {
 				Instantiate(Gem, Vector3(GameController.specialBrickXPosition2, GameController.specialBrickYPosition, 0), Quaternion.identity);
 			}
 			if(currColor != Color(1.0f, 1.0f, 1.0f, 1.0f)) {
@@ -85,4 +76,5 @@ function ResetBall() {
 
 function unFreeze() {
 	rightFreeze = false;
+	rigidbody2D.velocity.y = -5;
 }

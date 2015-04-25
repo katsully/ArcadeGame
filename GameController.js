@@ -16,9 +16,9 @@ static var specialBrickYPosition2 : float;
 function Start () {
 
 	// create a group of bricks 20 x 5
-	var offsetx : int = -8.5;
-	for(var i: int=0; i < 22; i++) {
-		if(i == 10 || i == 11){
+	var offsetx : float = -9.5;
+	for(var i: int=0; i < 24; i++) {
+		if(i == 11 || i == 12){
 			continue;
 		}
 		if(i > 11) {
@@ -32,9 +32,8 @@ function Start () {
 			}
 		}
 	}
-	specialBrickXPosition = 3*.7-8;
-	specialBrickYPosition = 1 * .4 + 2;
-	specialBrickXPosition2 = 18*.7 - 7;
+	specialBrickXPosition = 4*.7-9.5;
+	specialBrickYPosition = 0 * .4 + 2;
 	
 	topWall.size = new Vector2(mainCam.ScreenToWorldPoint (new Vector3(Screen.width * 2f, 0f, 0f)).x, 1f);
 	topWall.center = new Vector2(0f, mainCam.ScreenToWorldPoint(new Vector3(0f,Screen.height,0f)).y + 0.5f); 
@@ -49,4 +48,9 @@ function Start () {
 
 function Update () {
 	
+}
+
+function addGem(){
+	specialBrickXPosition2 = 18*.7 - 7;
+	specialBrickYPosition2 = 1 * .4 + 2;
 }
