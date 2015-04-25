@@ -28,7 +28,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 		canPass = true;
 		audio.pitch = Random.Range(0.8f, 1.2f);
 		audio.Play();
-		marble.freeze = true;
+		marble.stop();
 		time.startTimer();
 		GetComponent(SpriteRenderer).color = new Color(.2f,1f,1f,1f);
 	} 

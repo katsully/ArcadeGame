@@ -4,6 +4,7 @@ var Gem : GameObject;
 var player : Collider2D;
 var oppPlayer : Collider2D;
 var enemyHit : boolean = false;
+var otherPaddle : PaddleMovement;
 
 static var rightFreeze : boolean = false;
 
@@ -43,7 +44,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 				Destroy(coll.gameObject);
 				Score2Manager.score += 1;
 			}
-		} else {
+		} else if(otherPaddle.canPass){
 			if(currColor == Color(1.0f, 1.0f, 1.0f, 1.0f)) {
 				coll.gameObject.GetComponent(SpriteRenderer).color = new Color(.75f, .5f, .5f, 1f);
 			} else if(currColor == Color(.75f, .5f, .5f, 1f)) {
@@ -77,4 +78,9 @@ function ResetBall() {
 function unFreeze() {
 	rightFreeze = false;
 	rigidbody2D.velocity.y = -5;
+}
+
+function stop(){
+	rigidbody2D.transform.position.y = 0;
+	rightFreeze = true;
 }

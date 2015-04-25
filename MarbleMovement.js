@@ -29,10 +29,6 @@ function OnCollisionEnter2D( coll : Collision2D){
 //		var newY = rigidbody2D.velocity.y/-2;
 		rigidbody2D.velocity.y = -3;
 	} else if(coll.gameObject.tag == "Brick"){
-//		newY = rigidbody2D.velocity.y/2;
-//		if (newY > 0){
-//			newY *= -1;
-//		}
 		rigidbody2D.velocity.y = -5;
 		var currColor = coll.gameObject.GetComponent(SpriteRenderer).color;
 		if(!enemyHit) {
@@ -87,4 +83,9 @@ function unFreeze() {
 	freeze = false;
 	gameController.addGem();
 	rigidbody2D.velocity.y = -5;
+}
+
+function stop(){
+	rigidbody2D.transform.position.y = 0;
+	freeze = true;
 }
