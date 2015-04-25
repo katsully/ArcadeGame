@@ -68,7 +68,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 }
 
 function ResetBall() {
-	yield WaitForSeconds(5.0);
+	yield WaitForSeconds(2.0);
 	rigidbody2D.velocity.x = 0;
 	rigidbody2D.velocity.y = -5;
 	transform.position.x = 6;
