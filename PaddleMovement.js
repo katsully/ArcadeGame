@@ -3,8 +3,8 @@
 var moveLeft : KeyCode;
 var moveRight : KeyCode;
 var marble : MarbleMovement;
-var time : TimeManager;
 var wall : GameObject;
+var scoreTime : ScoreTimes;
 
 var speed : float = 10;
 static var canPass : boolean = false;
@@ -26,7 +26,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 		audio.pitch = Random.Range(0.8f, 1.2f);
 		audio.Play();
 		marble.stop();
-		time.startTimer();
+		scoreTime.startTimer(marble, this);
 		GetComponent(SpriteRenderer).color = new Color(.2f,1f,1f,1f);
 		wall.GetComponent(SpriteRenderer).color = new Color(.2f,1f,1f,1f);
 	} 

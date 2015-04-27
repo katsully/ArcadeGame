@@ -42,9 +42,10 @@ function OnCollisionEnter2D( coll : Collision2D){
 				}
 			} else {
 				Destroy(coll.gameObject);
-				Score2Manager.score += 1;
+				ScoreTimes.score2 += 1;
 			}
 		} else if(otherPaddle.canPass){
+			ScoreTimes.score += 1;
 			if(currColor == Color(1.0f, 1.0f, 1.0f, 1.0f)) {
 				coll.gameObject.GetComponent(SpriteRenderer).color = new Color(.75f, .5f, .5f, 1f);
 			} else if(currColor == Color(.75f, .5f, .5f, 1f)) {

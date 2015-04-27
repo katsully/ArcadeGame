@@ -4,6 +4,7 @@ var Gem : GameObject;
 var player : Collider2D;
 var oppPlayer : Collider2D;
 var enemyHit : boolean = false;
+var otherPaddle : Paddle2Movement;
 
 static var freeze : boolean = false;
 
@@ -44,10 +45,10 @@ function OnCollisionEnter2D( coll : Collision2D){
 				}
 			} else {
 				Destroy(coll.gameObject);
-				ScoreManager.score += 1;
+				ScoreTimes.score += 1;
 			}
-		} else {
-			Score2Manager.score += 1;
+		} else if(otherPaddle.leftCanPass){
+			ScoreTimes.score2 += 1;
 			if(currColor == Color(1.0f, 1.0f, 1.0f, 1.0f)) {
 				coll.gameObject.GetComponent(SpriteRenderer).color = new Color(.75f, .5f, .5f, 1f);
 			} else if(currColor == Color(.75f, .5f, .5f, 1f)) {
