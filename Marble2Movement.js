@@ -24,7 +24,11 @@ function Update () {
 
 function OnCollisionEnter2D( coll : Collision2D){
 	if(coll.gameObject.tag == "Wall"){
-		rigidbody2D.velocity.y = -3;
+		if (rigidbody2D.velocity.y < 0) {
+			rigidbody2D.velocity.y = -3;
+		} else {
+			rigidbody2D.velocity.y = 4;
+		}
 	} else if(coll.gameObject.tag == "Brick"){
 		rigidbody2D.velocity.y = -5;
 		var currColor = coll.gameObject.GetComponent(SpriteRenderer).color;
