@@ -23,6 +23,13 @@ function Update () {
 		rigidbody2D.velocity.y = 0;
 		rigidbody2D.velocity.x = 0;
 	}
+	if(Mathf.Abs(rigidbody2D.velocity.x) > 15){
+		if (rigidbody2D.velocity.x < 0 ) {
+			rigidbody2D.velocity.x += 2;
+		} else {
+			rigidbody2D.velocity.x -= 2;
+		}
+	}
 }
 
 function OnCollisionEnter2D( coll : Collision2D){
