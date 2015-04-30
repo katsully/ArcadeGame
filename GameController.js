@@ -8,6 +8,8 @@ var rightWall : BoxCollider2D;
 var leftWall : BoxCollider2D;
 var topWall : BoxCollider2D;
 
+var bricks : GameObject[];
+
 static var specialBrickXPosition : float;
 static var specialBrickYPosition : float;
 static var specialBrickXPosition2 : float;
@@ -36,7 +38,7 @@ function Start () {
 	specialBrickYPosition = 0 * .4 + 2;
 	
 	topWall.size = new Vector2(mainCam.ScreenToWorldPoint (new Vector3(Screen.width * 2f, 0f, 0f)).x, 1f);
-	topWall.center = new Vector2(0f, mainCam.ScreenToWorldPoint(new Vector3(0f,Screen.height,0f)).y + 0.5f); 
+	topWall.center = new Vector2(0f, mainCam.ScreenToWorldPoint(new Vector3(0f,Screen.height-1f,0f)).y + 0.5f); 
 	
 	leftWall.size = new Vector2(1f, mainCam.ScreenToWorldPoint (new Vector3(0f, Screen.height * 2f, 0f)).y);
 	leftWall.center = new Vector2(mainCam.ScreenToWorldPoint(new Vector3(0f,0f,0f)).x - 1.75f, 0f); 
@@ -50,7 +52,21 @@ function Update () {
 	
 }
 
-function addGem(){
-	specialBrickXPosition2 = 18*.7 - 7.5;
-	specialBrickYPosition2 = 1 * .4 + 2;
+function addGem(marble : Rigidbody2D){
+	bricks = GameObject.FindGameObjectsWithTag("Brick");
+	for (brick in bricks) {
+		if (marble.name == "Marble"){
+			if (brick.transform.position.x > 0){;
+				specialBrickXPosition2 = brick.transform.position.x;
+				specialBrickYPosition2 = brick.transform.position.y;
+				break;
+			}
+		}else if (marble.name == "Marble2"){
+				if (brick.transform.position.x < 0){
+					specialBrickXPosition = brick.transform.position.x;
+					specialBrickYPosition = brick.transform.position.y;
+					break;
+				}
+		}
+	}
 }

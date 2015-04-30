@@ -13,7 +13,7 @@ function Start () {
 }
 
 function Update () {
-	if(rigidbody2D.position.y < -7) {
+	if(rigidbody2D.position.y < -7 || rigidbody2D.position.x > 20) {
 		ResetBall();
 	}
 	if(rightFreeze) {
@@ -34,7 +34,7 @@ function OnCollisionEnter2D( coll : Collision2D){
 		if (rigidbody2D.velocity.y < 0) {
 			rigidbody2D.velocity.y = -3;
 		} else {
-			rigidbody2D.velocity.y = 4;
+			rigidbody2D.velocity.y = 3;
 		}
 	} else if(coll.gameObject.tag == "Brick"){
 		rigidbody2D.velocity.y = -5;
@@ -76,7 +76,6 @@ function OnCollisionEnter2D( coll : Collision2D){
 			enemyHit = true;
 		}
 	}
-	
 }
 
 function ResetBall() {

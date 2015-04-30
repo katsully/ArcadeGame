@@ -12,9 +12,6 @@ static var time2 : int=15;        // The player's time.
 var timeText : UnityEngine.UI.Text;       // Reference to the Text component.
 var timeText2 : UnityEngine.UI.Text;	  
 
-static var showTimeOne : boolean = false;
-static var showTimeTwo : boolean = false;
-
 function Awake ()
 {   
     // Reset the countdown.
@@ -24,6 +21,9 @@ function Awake ()
     // Reset the score.
     score = 0;
     score2 = 0;
+    
+    timeText.transform.position.x = Screen.width/4;
+    timeText2.transform.position.x = (Screen.width/4) * 3;
 }
 
 
@@ -39,10 +39,9 @@ function Update ()
 function startTimer(marble : MarbleMovement, paddle : PaddleMovement){
 	timeText.enabled = true;
 	while(time > -1){
-	
-	timeText.text = time + "";
-	yield WaitForSeconds(1.0);
-	time -= 1;
+		timeText.text = time + "";
+		yield WaitForSeconds(1.0);
+		time -= 1;
 	}
 	timeText.enabled = false;
 	marble.unFreeze();
