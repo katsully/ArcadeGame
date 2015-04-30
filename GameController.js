@@ -8,6 +8,9 @@ var rightWall : BoxCollider2D;
 var leftWall : BoxCollider2D;
 var topWall : BoxCollider2D;
 
+var gem : GameObject;
+var marble : MarbleMovement;
+var marble2 : Marble2Movement;
 var bricks : GameObject[];
 
 static var specialBrickXPosition : float;
@@ -49,7 +52,15 @@ function Start () {
 }
 
 function Update () {
-	
+	gem = GameObject.FindGameObjectWithTag("Gem");
+	if (gem != null && gem.transform.position.y < -7) {
+		if(gem.transform.position.x < 0) {
+			addGem(marble.rigidbody2D);
+		} else {
+			addGem(marble2.rigidbody2D);
+		}
+		Destroy(gem);
+	}	
 }
 
 function addGem(marble : Rigidbody2D){

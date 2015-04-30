@@ -8,6 +8,8 @@ var otherPaddle : PaddleMovement;
 
 static var rightFreeze : boolean = false;
 
+var gameController : GameController;
+
 function Start () {
 	rigidbody2D.velocity.y = -5;	
 }
@@ -88,6 +90,7 @@ function ResetBall() {
 
 function unFreeze() {
 	rightFreeze = false;
+	gameController.addGem(rigidbody2D);
 	rigidbody2D.velocity.y = -5;
 }
 
