@@ -15,8 +15,6 @@ var bricks : GameObject[];
 
 static var specialBrickXPosition : float;
 static var specialBrickYPosition : float;
-static var specialBrickXPosition2 : float;
-static var specialBrickYPosition2 : float;
 
 function Start () {
 
@@ -68,8 +66,8 @@ function addGem(marble : Rigidbody2D){
 	for (brick in bricks) {
 		if (marble.name == "Marble"){
 			if (brick.transform.position.x > 0){;
-				specialBrickXPosition2 = brick.transform.position.x;
-				specialBrickYPosition2 = brick.transform.position.y;
+				specialBrickXPosition = brick.transform.position.x;
+				specialBrickYPosition = brick.transform.position.y;
 				break;
 			}
 		}else if (marble.name == "Marble2"){
